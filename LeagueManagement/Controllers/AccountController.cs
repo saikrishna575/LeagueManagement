@@ -12,7 +12,7 @@ using LeagueManagement.Models;
 
 namespace LeagueManagement.Controllers
 {
-    [Authorize]
+   
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

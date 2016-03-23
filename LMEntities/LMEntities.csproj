@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\AspNetRoleMap.cs" />
+    <Compile Include="Mapping\AspNetUserRoleMap.cs" />
+    <Compile Include="Mapping\AspNetUsersMap.cs" />
     <Compile Include="Mapping\CityStateZipMap.cs" />
     <Compile Include="Mapping\EventAddressMap.cs" />
     <Compile Include="Mapping\EventCommentMap.cs" />
@@ -85,6 +88,9 @@
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Mapping\UserTypeMap.cs" />
     <Compile Include="Mapping\YearMap.cs" />
+    <Compile Include="Models\AspNetRole.cs" />
+    <Compile Include="Models\AspNetUser.cs" />
+    <Compile Include="Models\AspNetUserRoles.cs" />
     <Compile Include="Models\CityStateZip.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventAddress.cs" />
