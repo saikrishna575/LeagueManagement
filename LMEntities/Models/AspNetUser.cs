@@ -10,10 +10,10 @@ namespace LMEntities.Models
     public partial class AspNetUser
     {
 
-        public AspNetUser()
-        {          
-            AspNetRoles = new HashSet<AspNetRole>();
-        }
+        //public AspNetUser()
+        //{          
+        //    AspNetRoles = new HashSet<AspNetRole>();
+        //}
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -29,7 +29,7 @@ namespace LMEntities.Models
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
      
-        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        //public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
 
         public virtual ICollection<AspNetUserRoles> AspNetUsersRoles { get; set; }
     }

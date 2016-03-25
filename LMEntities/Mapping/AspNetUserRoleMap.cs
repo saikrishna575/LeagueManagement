@@ -9,7 +9,8 @@ namespace LMEntities.Models.Mapping
         {
             // Primary Key
             this.HasKey(t => t.UserId);
-            
+            this.HasKey(t => t.RoleId);
+
             // Properties
             this.Property(t => t.UserId)
                 .IsRequired()
@@ -33,9 +34,9 @@ namespace LMEntities.Models.Mapping
             this.HasRequired(t => t.AspNetUser)
               .WithMany(t => t.AspNetUsersRoles)
               .HasForeignKey(d => d.UserId);
-            this.HasOptional(t => t.AspNetRole)
-                .WithMany(t => t.AspNetUsersRoles)
-                .HasForeignKey(d => d.RoleId);
+            //this.HasRequired(t => t.AspNetRole)
+            //    .WithMany(t => t.AspNetUsersRoles)
+            //    .HasForeignKey(d => d.RoleId);
 
 
         }
