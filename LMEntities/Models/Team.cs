@@ -29,6 +29,9 @@ namespace LMEntities.Models
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public virtual ICollection<Event> Events { get; set; }
         public virtual ICollection<Event> Events1 { get; set; }
+
+        public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Schedule> Schedules1 { get; set; }
         public virtual ICollection<MatchResult> MatchResults { get; set; }
         public virtual ICollection<MatchResult> MatchResults1 { get; set; }
         public virtual ICollection<MatchResult> MatchResults2 { get; set; }

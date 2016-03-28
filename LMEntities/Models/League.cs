@@ -1,9 +1,10 @@
+using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
 
 namespace LMEntities.Models
 {
-    public partial class League
+    public partial class League :Entity
     {
         public League()
         {

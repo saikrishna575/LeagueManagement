@@ -14,13 +14,14 @@ namespace LMEntities.Models
         //{
         //    AspNetUsers = new HashSet<AspNetUser>();
         //}
+        [Key]
         public string Id { get; set; }
         public string Name { get; set; }
 
        
         //public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
 
-        public virtual ICollection<AspNetUserRoles> AspNetUsersRoles { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
 
     }
 }

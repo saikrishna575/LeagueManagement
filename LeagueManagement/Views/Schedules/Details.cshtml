@@ -1,0 +1,114 @@
+﻿@model LMEntities.Models.Schedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ground.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ground.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Season.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Season.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeTeamId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeTeamId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisitorTeamId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisitorTeamId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UmpireId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UmpireId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModfiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModfiedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

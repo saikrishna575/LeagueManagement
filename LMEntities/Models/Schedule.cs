@@ -1,9 +1,10 @@
+using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
 
 namespace LMEntities.Models
 {
-    public partial class Schedule
+    public partial class Schedule : Entity
     {
         public Schedule()
         {
@@ -26,5 +27,12 @@ namespace LMEntities.Models
         public virtual ICollection<MatchResult> MatchResults { get; set; }
         public virtual Season Season { get; set; }
         public virtual Year Year { get; set; }
+
+        public virtual Ground Ground { get; set; }
+
+
+        public virtual Team Team { get; set; }
+        public virtual Team Team1 { get; set; }
+
     }
 }

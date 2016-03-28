@@ -16,7 +16,7 @@ namespace LMEntities.Models
        
         public string RoleId { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual AspNetRole AspNetRole { get; set; }
-
+        public virtual ICollection<AspNetRole> AspNetUsersRoles { get; set; }
+        
     }
 }

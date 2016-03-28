@@ -46,6 +46,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -137,12 +145,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -192,12 +194,14 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\GroundsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaguesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
+    <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Controllers\SkillSpecialitiesController.cs" />
     <Compile Include="Controllers\TeamMembersController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
@@ -335,16 +339,21 @@
     <Content Include="Views\TeamMembers\Details.cshtml" />
     <Content Include="Views\TeamMembers\Edit.cshtml" />
     <Content Include="Views\TeamMembers\Index.cshtml" />
-    <Content Include="Views\AspNetRoles\Create.cshtml" />
-    <Content Include="Views\AspNetRoles\Delete.cshtml" />
-    <Content Include="Views\AspNetRoles\Details.cshtml" />
-    <Content Include="Views\AspNetRoles\Edit.cshtml" />
-    <Content Include="Views\AspNetRoles\Index.cshtml" />
-    <Content Include="Views\AspNetUserRoles\Create.cshtml" />
-    <Content Include="Views\AspNetUserRoles\Delete.cshtml" />
-    <Content Include="Views\AspNetUserRoles\Details.cshtml" />
-    <Content Include="Views\AspNetUserRoles\Edit.cshtml" />
-    <Content Include="Views\AspNetUserRoles\Index.cshtml" />
+    <Content Include="Views\Schedules\Create.cshtml" />
+    <Content Include="Views\Schedules\Delete.cshtml" />
+    <Content Include="Views\Schedules\Details.cshtml" />
+    <Content Include="Views\Schedules\Edit.cshtml" />
+    <Content Include="Views\Schedules\Index.cshtml" />
+    <Content Include="Views\Grounds\Create.cshtml" />
+    <Content Include="Views\Grounds\Delete.cshtml" />
+    <Content Include="Views\Grounds\Details.cshtml" />
+    <Content Include="Views\Grounds\Edit.cshtml" />
+    <Content Include="Views\Grounds\Index.cshtml" />
+    <Content Include="Views\Seasons\Create.cshtml" />
+    <Content Include="Views\Seasons\Delete.cshtml" />
+    <Content Include="Views\Seasons\Details.cshtml" />
+    <Content Include="Views\Seasons\Edit.cshtml" />
+    <Content Include="Views\Seasons\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

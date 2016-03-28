@@ -14,6 +14,7 @@ namespace LMEntities.Models
         //{          
         //    AspNetRoles = new HashSet<AspNetRole>();
         //}
+        [Key]
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
