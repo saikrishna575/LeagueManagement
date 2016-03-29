@@ -19,7 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
+    @Scripts.Render("~/bundles/jquery")
        @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -78,11 +78,11 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li @*class="active"*@>@Html.ActionLink("Home","Index","Home")</li>
-                            <li><a href="#about">Schedule</a></li>
+                            <li>@Html.ActionLink("Schedule", "Index", "Schedules")</li>
                             <li class="dropdown">
                                 <a href="#contact" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something else here</a></li>
                                 </ul>
@@ -90,18 +90,16 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics </span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
+                                    <li><a href="#">Another action</a></li>
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something else here</a></li>
-
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams </span></a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
+                                    
 
                                 </ul>
                             </li>
@@ -117,10 +115,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grounds </span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
+                                    <li>@Html.ActionLink("Ground", "Index", "Grounds")</li>
+                                  
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -193,7 +189,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <div class="copyrights pull-right">© 2014 Millennium. All Rights Reserved.</div>
+                    <div class="copyrights pull-right">Copyright @@ @DateTime.Now.Year - NATA Cricket League Association | All rights reserved..</div>
                 </div>
             </div>
         </section>
@@ -201,7 +197,7 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   @* <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="~/js/bootstrap.min.js"></script>
     <script>
@@ -217,7 +213,7 @@
         }
     );
 });</script>
-    @Scripts.Render("~/bundles/jquery")
+  
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

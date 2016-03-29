@@ -220,10 +220,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\Images\ui-icons_444444_256x240.png" />
+    <Content Include="css\Images\ui-icons_555555_256x240.png" />
+    <Content Include="css\Images\ui-icons_777620_256x240.png" />
+    <Content Include="css\Images\ui-icons_777777_256x240.png" />
+    <Content Include="css\Images\ui-icons_cc0000_256x240.png" />
+    <Content Include="css\Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\jquery-ui.min.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -260,6 +268,8 @@
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

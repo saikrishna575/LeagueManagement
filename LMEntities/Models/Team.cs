@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace LMEntities.Models
 {
@@ -19,6 +20,7 @@ namespace LMEntities.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
+        [DisplayName("Organization Name")]
         public int OrganizationId { get; set; }
         public string NickName { get; set; }
         public string Description { get; set; }

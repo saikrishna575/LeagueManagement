@@ -27,6 +27,8 @@ namespace LeagueManagement.Controllers
         // GET: Leagues
         public async Task<ActionResult> Index()
         {
+
+
             return View(await _leagueService.GetAsync());
         }
 

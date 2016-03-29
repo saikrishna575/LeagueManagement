@@ -1,6 +1,7 @@
 using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace LMEntities.Models
 {
@@ -12,11 +13,19 @@ namespace LMEntities.Models
         }
 
         public int Id { get; set; }
+        [DisplayName("Season Name")]
         public int SeasonId { get; set; }
+        [DisplayName("Year")]
         public int YearId { get; set; }
+        [DisplayName("Home Team")]
         public int HomeTeamId { get; set; }
+        [DisplayName("Visitor Team")]
         public int VisitorTeamId { get; set; }
+
+        [DisplayName("Umpire Name")]
         public Nullable<int> UmpireId { get; set; }
+
+        [DisplayName("Ground Name")]
         public Nullable<int> GroundId { get; set; }
         public Nullable<System.DateTime> StartTime { get; set; }
         public Nullable<System.DateTime> EndTime { get; set; }
