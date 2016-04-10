@@ -3,21 +3,26 @@ using System.Data.Entity.ModelConfiguration;
 using LMEntities.Models;
 namespace LMEntities.Models.Mapping
 {
-    public class YearMap : EntityTypeConfiguration<Year>
-    {
-        public YearMap()
+     public class GroundMap : EntityTypeConfiguration<Ground>
         {
-            // Primary Key
-            this.HasKey(t => t.Id);
+            public GroundMap()
+            {
+                // Primary Key
+                this.HasKey(t => t.Id);
 
-            // Properties
+            //// Properties
             this.Property(t => t.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             // Table & Column Mappings
-            this.ToTable("Year");
-            this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.YearNumber).HasColumnName("YearNumber");
+            this.ToTable("Ground");
+                this.Property(t => t.Id).HasColumnName("Id");
+                this.Property(t => t.Name).HasColumnName("Name");
+                this.Property(t => t.Address).HasColumnName("Address");
+                this.Property(t => t.Directions).HasColumnName("Directions");
+
+            }
         }
     }
-}
+
+

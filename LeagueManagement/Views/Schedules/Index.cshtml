@@ -4,96 +4,109 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GroundId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeasonId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.YearId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeTeamId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VisitorTeamId)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.UmpireId)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModfiedBy)
-            </th>*@
-        <th></th>
-    </tr>
+<div class="col-md-12 col-sm-12 mininumheight">
+    <div class="table-responsive">
+        <div class="form-group">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ground.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Season.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year.YearNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Team.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Team1.Name)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.UmpireId)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedBy)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModfiedBy)
-                </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+            <b> @Html.ActionLink("Add New Schedule", "Create", new { htmlAttributes = new { @class = "col-sm-12 control-label back" } })</b>
 
-</table>
+        </div>
+        <table class="col-md-12 table-bordered table-striped table-condensed cf">
+            <thead class="cf">
+                <tr>
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.GroundId)
+                    </th>
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.SeasonId)
+                    </th>
+
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.HomeTeamId)
+                    </th>
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.VisitorTeamId)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.UmpireId)
+                        </th>*@
+
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.ScheduleDate)
+                    </th>
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.StartTime)
+                    </th>
+                    <th class="numeric">
+                        @Html.DisplayNameFor(model => model.EndTime)
+                    </th>
+
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModfiedBy)
+                        </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.Ground.Name)
+                        </td>
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.Season.Name)
+                        </td>
+
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.Team.Name)
+                        </td>
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.Team1.Name)
+                        </td>
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.ScheduleDate)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.UmpireId)
+                            </td>*@
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.StartTime)
+                        </td>
+                        <td class="numeric">
+                            @Html.DisplayFor(modelItem => item.EndTime)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModfiedBy)
+                            </td>*@
+                        <td class="numeric">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                </tbody>
+
+            }
+
+        </table>
+    </div>
+    </div>

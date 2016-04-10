@@ -51,7 +51,8 @@ namespace LeagueManagement.Controllers
             ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
             ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
             ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name");
-            ViewBag.YearId = new SelectList(db.Years, "Id", "Id");
+            ViewBag.YearId = new SelectList(db.Years, "Id", "YearNumber");
+            ViewBag.Umpires = new SelectList(db.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName");
             return View();
         }
 
@@ -72,7 +73,7 @@ namespace LeagueManagement.Controllers
             ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
             ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
             ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name", schedule.SeasonId);
-            ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
+           
             return View(schedule);
         }
 

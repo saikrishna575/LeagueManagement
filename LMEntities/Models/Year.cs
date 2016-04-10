@@ -4,18 +4,15 @@ using System.Collections.Generic;
 
 namespace LMEntities.Models
 {
-    public partial class Ground : Entity
+    public partial class Year
     {
-        public Ground()
+        public Year()
         {
             this.Schedules = new List<Schedule>();
         }
 
         public int Id { get; set; }
-        public string  Name  { get; set; }
-        public string Address { get; set; }
-        public string Directions { get; set; }
-
+        public int YearNumber { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }

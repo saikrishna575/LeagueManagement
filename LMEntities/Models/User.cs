@@ -1,9 +1,10 @@
+using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
 
 namespace LMEntities.Models
 {
-    public partial class User
+    public partial class User :Entity
     {
         public User()
         {
@@ -32,7 +33,11 @@ namespace LMEntities.Models
         public string EmailId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Password { get; set; }
+        public string Password { get; set; }     
+        public string UserName
+        {
+            get { return string.Format("{0}    {1}", FirstName, LastName); }
+        }
         public Nullable<int> GenderId { get; set; }
         public string ProfilePhoto { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

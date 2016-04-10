@@ -27,8 +27,11 @@ namespace LMEntities.Models
 
         [DisplayName("Ground Name")]
         public Nullable<int> GroundId { get; set; }
-        public Nullable<System.DateTime> StartTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
+
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+
+        public DateTime ScheduleDate { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }

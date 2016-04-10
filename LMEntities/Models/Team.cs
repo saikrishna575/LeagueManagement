@@ -24,6 +24,7 @@ namespace LMEntities.Models
         public int OrganizationId { get; set; }
         public string NickName { get; set; }
         public string Description { get; set; }
+        [DisplayName("Team Photo")]
         public string PhotoUrl { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

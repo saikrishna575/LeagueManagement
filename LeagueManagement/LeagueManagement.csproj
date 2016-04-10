@@ -206,6 +206,7 @@
     <Compile Include="Controllers\TeamMembersController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\TeamTitlesController.cs" />
+    <Compile Include="Controllers\UmpiresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +232,7 @@
     <Content Include="css\Images\ui-icons_777777_256x240.png" />
     <Content Include="css\Images\ui-icons_cc0000_256x240.png" />
     <Content Include="css\Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\jquery-ui-timepicker-addon.css" />
     <Content Include="css\jquery-ui.min.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
@@ -268,6 +270,7 @@
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-timepicker-addon.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -280,6 +283,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="TeamPhotos\Index_team.png" />
+    <Content Include="TeamPhotos\Last-sem-fall-fee-2015.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -364,6 +369,11 @@
     <Content Include="Views\Seasons\Details.cshtml" />
     <Content Include="Views\Seasons\Edit.cshtml" />
     <Content Include="Views\Seasons\Index.cshtml" />
+    <Content Include="Views\Umpires\Create.cshtml" />
+    <Content Include="Views\Umpires\Delete.cshtml" />
+    <Content Include="Views\Umpires\Details.cshtml" />
+    <Content Include="Views\Umpires\Edit.cshtml" />
+    <Content Include="Views\Umpires\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
