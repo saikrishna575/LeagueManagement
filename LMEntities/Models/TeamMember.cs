@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Repository.Pattern.Ef6;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace LMEntities.Models
 {
@@ -15,9 +16,13 @@ namespace LMEntities.Models
       
         public int ID { get; set; }
         public int OrganizationId { get; set; }
+        [DisplayName("Team")]
         public int TeamId { get; set; }
+
+        public int UserId { get; set; }
         public string Name { get; set; }
         public string NickName { get; set; }
+        [DisplayName("Skill")]
         public int SkillSpecialityId { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public string PlaceofBirth { get; set; }
@@ -42,6 +47,7 @@ namespace LMEntities.Models
         public virtual ICollection<MatchResult> MatchResults { get; set; }
         public virtual SkillSpeciality SkillSpeciality { get; set; }
         public virtual Team Team { get; set; }
+        public virtual User  User { get; set; }
         public virtual ICollection<TeamManagement> TeamManagements { get; set; }
     }
 }

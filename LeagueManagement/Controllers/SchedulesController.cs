@@ -41,6 +41,11 @@ namespace LeagueManagement.Controllers
             {
                 return HttpNotFound();
             }
+            schedule.Team = (Team)(from a in db.Teams where a.Id == schedule.HomeTeamId select a).SingleOrDefault();
+            schedule.Team1 = (Team)(from a in db.Teams where a.Id == schedule.VisitorTeamId select a).SingleOrDefault();
+            schedule.Ground = (Ground)(from a in db.Grounds where a.Id == schedule.GroundId select a).SingleOrDefault();
+            schedule.Season = (Season)(from a in db.Seasons where a.Id == schedule.SeasonId select a).SingleOrDefault();
+            schedule.Umpire = (User)(from a in db.Users where a.Id == schedule.UmpireId select a).SingleOrDefault();
             return View(schedule);
         }
 
@@ -51,7 +56,7 @@ namespace LeagueManagement.Controllers
             ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
             ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
             ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name");
-            ViewBag.YearId = new SelectList(db.Years, "Id", "YearNumber");
+           // ViewBag.YearId = new SelectList(db.Years, "Id", "YearNumber");
             ViewBag.Umpires = new SelectList(db.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName");
             return View();
         }
@@ -61,7 +66,7 @@ namespace LeagueManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,SeasonId,YearId,HomeTeamId,VisitorTeamId,UmpireId,GroundId,StartTime,EndTime,CreatedOn,CreatedBy,ModifiedOn,ModfiedBy")] Schedule schedule)
+        public async Task<ActionResult> Create(Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +98,7 @@ namespace LeagueManagement.Controllers
             ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
             ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
             ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name", schedule.SeasonId);
-            ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
+           // ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
             return View(schedule);
         }
 
@@ -102,7 +107,7 @@ namespace LeagueManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,SeasonId,YearId,HomeTeamId,VisitorTeamId,UmpireId,GroundId,StartTime,EndTime,CreatedOn,CreatedBy,ModifiedOn,ModfiedBy")] Schedule schedule)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,SeasonId,YearId,HomeTeamId,VisitorTeamId,UmpireId,GroundId,ScheduleDate,StartTime,EndTime,CreatedOn,CreatedBy,ModifiedOn,ModfiedBy")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +120,7 @@ namespace LeagueManagement.Controllers
             ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
             ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
             ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name", schedule.SeasonId);
-            ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
+           // ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
             return View(schedule);
         }
 
@@ -131,6 +136,11 @@ namespace LeagueManagement.Controllers
             {
                 return HttpNotFound();
             }
+            schedule.Team = (Team)(from a in db.Teams where a.Id == schedule.HomeTeamId select a).SingleOrDefault();
+            schedule.Team1 = (Team)(from a in db.Teams where a.Id == schedule.VisitorTeamId select a).SingleOrDefault();
+            schedule.Ground = (Ground)(from a in db.Grounds where a.Id == schedule.GroundId select a).SingleOrDefault();
+            schedule.Season = (Season)(from a in db.Seasons where a.Id == schedule.SeasonId select a).SingleOrDefault();
+            schedule.Umpire = (User)(from a in db.Users where a.Id == schedule.UmpireId select a).SingleOrDefault();
             return View(schedule);
         }
 

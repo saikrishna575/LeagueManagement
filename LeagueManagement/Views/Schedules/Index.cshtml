@@ -54,7 +54,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.ModfiedBy)
                         </th>*@
+
                     <th></th>
+
                 </tr>
             </thead>
             @foreach (var item in Model)
@@ -98,15 +100,29 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.ModfiedBy)
                             </td>*@
-                        <td class="numeric">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                       @if (User.IsInRole("Admin"))
+                       {
+                        <td class="numeric">                           
+                            @Html.ActionLink("View Details", "Details", new { id = item.Id }) |
+                           
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+                            |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
+                                                                                                            
                         </td>
+                       }
+
+                       else
+                       {
+                        <td class="numeric">
+                            @Html.ActionLink("View Details", "Details", new { id = item.Id })
+
+                        </td>
+                       }
                     </tr>
-                </tbody>
-
-            }
-
+                </tbody>    
+                            }
         </table>
     </div>
     </div>

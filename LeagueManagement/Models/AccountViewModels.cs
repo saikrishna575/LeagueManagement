@@ -89,7 +89,10 @@ namespace LeagueManagement.Models
         
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Required]
 
+        [Display(Name = "Phone Number")]
+        public string  PhoneNumber { get; set; }
 
 
     }

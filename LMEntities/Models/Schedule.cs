@@ -2,6 +2,7 @@ using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMEntities.Models
 {
@@ -16,7 +17,7 @@ namespace LMEntities.Models
         [DisplayName("Season Name")]
         public int SeasonId { get; set; }
         [DisplayName("Year")]
-        public int YearId { get; set; }
+        public int? YearId { get; set; }
         [DisplayName("Home Team")]
         public int HomeTeamId { get; set; }
         [DisplayName("Visitor Team")]
@@ -30,9 +31,9 @@ namespace LMEntities.Models
 
         public string StartTime { get; set; }
         public string EndTime { get; set; }
-
-        public DateTime ScheduleDate { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public Nullable<System.DateTime> ScheduleDate { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<int> ModfiedBy { get; set; }
@@ -45,6 +46,8 @@ namespace LMEntities.Models
 
         public virtual Team Team { get; set; }
         public virtual Team Team1 { get; set; }
+
+        public virtual User Umpire { get; set; }
 
     }
 }

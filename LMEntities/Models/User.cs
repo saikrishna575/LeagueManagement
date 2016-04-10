@@ -24,6 +24,7 @@ namespace LMEntities.Models
             this.MatchResults1 = new List<MatchResult>();
             this.MediaComments = new List<MediaComment>();
             this.MediaComments1 = new List<MediaComment>();
+            
             this.Teams = new List<Team>();
         }
 
@@ -31,6 +32,9 @@ namespace LMEntities.Models
         public int OrganizationId { get; set; }
         public Nullable<int> UserTypeId { get; set; }
         public string EmailId { get; set; }
+
+        public string PhoneNumber { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }     
@@ -59,6 +63,8 @@ namespace LMEntities.Models
         public virtual ICollection<MatchResult> MatchResults1 { get; set; }
         public virtual ICollection<MediaComment> MediaComments { get; set; }
         public virtual ICollection<MediaComment> MediaComments1 { get; set; }
+
+        public virtual ICollection<TeamMember> TeamMembers { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
         public virtual User User1 { get; set; }
