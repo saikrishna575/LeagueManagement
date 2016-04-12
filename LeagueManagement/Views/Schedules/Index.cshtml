@@ -28,9 +28,9 @@
                     <th class="numeric">
                         @Html.DisplayNameFor(model => model.VisitorTeamId)
                     </th>
-                    @*<th>
+                    <th>
                             @Html.DisplayNameFor(model => model.UmpireId)
-                        </th>*@
+                        </th>
 
                     <th class="numeric">
                         @Html.DisplayNameFor(model => model.ScheduleDate)
@@ -64,43 +64,35 @@
                 <tbody>
                     <tr>
                         <td class="numeric">
-                            @Html.DisplayFor(modelItem => item.Ground.Name)
+                            @Html.ActionLink(item.Ground.Name, "Details", "Grounds", new { id = item.Ground.Id }, null)
+                            
+                          
                         </td>
                         <td class="numeric">
                             @Html.DisplayFor(modelItem => item.Season.Name)
                         </td>
 
                         <td class="numeric">
-                            @Html.DisplayFor(modelItem => item.Team.Name)
+                            @Html.ActionLink(item.Team.Name, "Details", "Teams", new { id = item.Team.Id }, null)
                         </td>
                         <td class="numeric">
-                            @Html.DisplayFor(modelItem => item.Team1.Name)
+                            @Html.ActionLink(item.Team1.Name, "Details", "Teams", new { id = item.Team1.Id }, null)
+                        </td>
+                        <td class="numeric">
+                            @Html.ActionLink(item.Umpire.UserName, "Details", "Upmires", new { id = item.Umpire.Id }, null)
+                          
                         </td>
                         <td class="numeric">
                             @Html.DisplayFor(modelItem => item.ScheduleDate)
                         </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.UmpireId)
-                            </td>*@
+                        
                         <td class="numeric">
                             @Html.DisplayFor(modelItem => item.StartTime)
                         </td>
                         <td class="numeric">
                             @Html.DisplayFor(modelItem => item.EndTime)
                         </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.CreatedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreatedBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ModifiedOn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ModfiedBy)
-                            </td>*@
-
+                     
                        @if (User.IsInRole("Admin"))
                        {
                         <td class="numeric">                           

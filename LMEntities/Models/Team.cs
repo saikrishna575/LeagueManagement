@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMEntities.Models
 {
@@ -41,7 +42,13 @@ namespace LMEntities.Models
         public virtual ICollection<MatchResult> MatchResults3 { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual User User { get; set; }
+        [NotMapped]
+        public virtual TeamMember TeamMember { get; set; }
         public virtual ICollection<TeamManagement> TeamManagements { get; set; }
         public virtual ICollection<TeamMember> TeamMembers { get; set; }
+        [NotMapped]
+        public virtual ICollection<User> Users { get; set; }
+
+
     }
 }

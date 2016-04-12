@@ -1,6 +1,7 @@
 using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMEntities.Models
 {
@@ -32,7 +33,8 @@ namespace LMEntities.Models
         public int OrganizationId { get; set; }
         public Nullable<int> UserTypeId { get; set; }
         public string EmailId { get; set; }
-
+        [NotMapped]
+        public bool IsSelected { get; set; }
         public string PhoneNumber { get; set; }
 
         public string FirstName { get; set; }
@@ -40,7 +42,7 @@ namespace LMEntities.Models
         public string Password { get; set; }     
         public string UserName
         {
-            get { return string.Format("{0}    {1}", FirstName, LastName); }
+            get { return string.Format("{0} {1}", FirstName, LastName); }
         }
         public Nullable<int> GenderId { get; set; }
         public string ProfilePhoto { get; set; }
@@ -63,7 +65,7 @@ namespace LMEntities.Models
         public virtual ICollection<MatchResult> MatchResults1 { get; set; }
         public virtual ICollection<MediaComment> MediaComments { get; set; }
         public virtual ICollection<MediaComment> MediaComments1 { get; set; }
-
+        public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<TeamMember> TeamMembers { get; set; }
         public virtual Organization Organization { get; set; }
         public virtual ICollection<Team> Teams { get; set; }

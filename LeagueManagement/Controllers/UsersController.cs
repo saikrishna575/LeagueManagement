@@ -12,12 +12,12 @@ using Repository.Pattern.UnitOfWork;
 using LMService;
 namespace LeagueManagement.Controllers
 {
-    public class UmpiresController : Controller
+    public class UsersController : Controller
     {
         private SportsSiteContext db = new SportsSiteContext();
         private readonly IUserService _UserService;
         private IUnitOfWork _unitOfWork;
-        public UmpiresController(IUserService UserService, IUnitOfWork unitOfWork)
+        public UsersController(IUserService UserService, IUnitOfWork unitOfWork)
         {
             _UserService = UserService;
             _unitOfWork = unitOfWork;
@@ -46,10 +46,11 @@ namespace LeagueManagement.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
-            
-           List<LMEntities.Models.User> user = db.Users.Where(a=> a.UserTypeId != 2).ToList(); 
-
-            return View(user);
+            ViewBag.GenderId = new SelectList(db.Genders, "Id", "Name");
+            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Name");
+            ViewBag.Id = new SelectList(db.Users, "Id", "EmailId");
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "Id", "Name");
+            return View();
         }
 
         // POST: Users/Create
@@ -57,25 +58,20 @@ namespace LeagueManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(FormCollection formCollection)
+        public async Task<ActionResult> Create([Bind(Include = "Id,OrganizationId,UserTypeId,EmailId,FirstName,LastName,Password,GenderId,ProfilePhoto,CreatedOn,ModifiedOn")] User user)
         {
             if (ModelState.IsValid)
             {
-
-                var request = formCollection.AllKeys.Where(c => c.StartsWith("chk")).ToList();
-                for (int i = 0; i < request.Count(); i++)
-                {
-                    string[] val = request[i].Split('-');
-                    int userid = Convert.ToInt32(val[1].ToString());
-                    User user = await _UserService.FindAsync(userid);
-                    user.UserTypeId = 2;
-                    user.ObjectState = Repository.Pattern.Infrastructure.ObjectState.Modified;
-                    _UserService.Update(user);
-                    _unitOfWork.SaveChanges();
-                }               
+                _UserService.Insert(user);
+                _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
-            }           
-            return View();
+            }
+
+            ViewBag.GenderId = new SelectList(db.Genders, "Id", "Name", user.GenderId);
+            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Name", user.OrganizationId);
+            ViewBag.Id = new SelectList(db.Users, "Id", "EmailId", user.Id);
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "Id", "Name", user.UserTypeId);
+            return View(user);
         }
 
         // GET: Users/Edit/5
@@ -138,15 +134,10 @@ namespace LeagueManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            User user = await _UserService.FindAsync(id);          
-            user.ObjectState = Repository.Pattern.Infrastructure.ObjectState.Modified;
-            user.UserTypeId = 3;
-            _UserService.Update(user);
+            await _UserService.DeleteAsync(id);
             _unitOfWork.SaveChanges();
             return RedirectToAction("Index");
 
-
-           
         }
 
         protected override void Dispose(bool disposing)
