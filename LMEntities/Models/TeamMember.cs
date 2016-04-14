@@ -15,9 +15,11 @@ namespace LMEntities.Models
         }
       
         public int ID { get; set; }
+        [DisplayName("Organization Name")]
         public int OrganizationId { get; set; }
-        [DisplayName("Team")]
+        [DisplayName("Team Name")]
         public int TeamId { get; set; }
+        [DisplayName("User Name")]
         public int UserId { get; set; }
         public string Name { get; set; }
         public string NickName { get; set; }

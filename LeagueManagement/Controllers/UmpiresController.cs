@@ -46,9 +46,8 @@ namespace LeagueManagement.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
-            
-           List<LMEntities.Models.User> user = db.Users.Where(a=> a.UserTypeId != 2).ToList(); 
-
+            User user = new LMEntities.Models.User();
+            user.Umpires = db.Users.Where(a => a.UserTypeId != 2).ToList(); 
             return View(user);
         }
 
@@ -59,6 +58,11 @@ namespace LeagueManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(FormCollection formCollection)
         {
+            if(formCollection.AllKeys.Where(c => c.StartsWith("chk")).ToList().Count == 0)
+            {
+                ModelState.AddModelError("Umpire", "Please Select an umpire");
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -74,8 +78,10 @@ namespace LeagueManagement.Controllers
                     _unitOfWork.SaveChanges();
                 }               
                 return RedirectToAction("Index");
-            }           
-            return View();
+            }
+            User users = new LMEntities.Models.User();
+            users.Umpires = db.Users.Where(a => a.UserTypeId != 2).ToList();
+            return View(users);
         }
 
         // GET: Users/Edit/5

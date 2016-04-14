@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMEntities.Models
@@ -20,10 +21,16 @@ namespace LMEntities.Models
         }
 
         public int Id { get; set; }
+        [Required]
+        [DisplayName("Team Name")]
         public string Name { get; set; }
+        [Required]
         [DisplayName("Organization Name")]
         public int OrganizationId { get; set; }
+        [Required]
+        [DisplayName("Nick Name")]
         public string NickName { get; set; }
+        [Required]
         public string Description { get; set; }
         [DisplayName("Team Photo")]
         public string PhotoUrl { get; set; }
@@ -41,6 +48,8 @@ namespace LMEntities.Models
         public virtual ICollection<MatchResult> MatchResults2 { get; set; }
         public virtual ICollection<MatchResult> MatchResults3 { get; set; }
         public virtual Organization Organization { get; set; }
+        [NotMapped]
+        public virtual ICollection<Organization> Organizations { get; set; } 
         public virtual User User { get; set; }
         [NotMapped]
         public virtual TeamMember TeamMember { get; set; }
@@ -48,6 +57,9 @@ namespace LMEntities.Models
         public virtual ICollection<TeamMember> TeamMembers { get; set; }
         [NotMapped]
         public virtual ICollection<User> Users { get; set; }
+        [NotMapped]
+        [DisplayName("Please select Team Members")]
+        public string tm { get; set; }
 
 
     }

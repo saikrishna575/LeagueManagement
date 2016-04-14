@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using LMEntities.Models;
 using Repository.Pattern.UnitOfWork;
@@ -15,12 +10,11 @@ namespace LeagueManagement.Controllers
 {
     public class SchedulesController : Controller
     {
-        private SportsSiteContext db = new SportsSiteContext();
         private readonly IScheduleService _scheduleService;
-        private IUnitOfWork _unitOfWork;
-        public SchedulesController(IScheduleService ScheduleService, IUnitOfWork unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+        public SchedulesController(IScheduleService scheduleService, IUnitOfWork unitOfWork)
         {
-            _scheduleService = ScheduleService;
+            _scheduleService = scheduleService;
             _unitOfWork = unitOfWork;
         }
         // GET: Schedules
@@ -32,32 +26,19 @@ namespace LeagueManagement.Controllers
         // GET: Schedules/Details/5
         public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Schedule schedule = await _scheduleService.FindAsync(id);
-            if (schedule == null)
-            {
-                return HttpNotFound();
-            }
-            schedule.Team = (Team)(from a in db.Teams where a.Id == schedule.HomeTeamId select a).SingleOrDefault();
-            schedule.Team1 = (Team)(from a in db.Teams where a.Id == schedule.VisitorTeamId select a).SingleOrDefault();
-            schedule.Ground = (Ground)(from a in db.Grounds where a.Id == schedule.GroundId select a).SingleOrDefault();
-            schedule.Season = (Season)(from a in db.Seasons where a.Id == schedule.SeasonId select a).SingleOrDefault();
-            schedule.Umpire = (User)(from a in db.Users where a.Id == schedule.UmpireId select a).SingleOrDefault();
+           Schedule schedule = _scheduleService.Find(id);
             return View(schedule);
         }
 
         // GET: Schedules/Create
         public ActionResult Create()
         {
-            ViewBag.HomeTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
-            ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name");
+            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name");
+            ViewBag.SeasonId = new SelectList(_scheduleService.Seasons, "Id", "Name");
            // ViewBag.YearId = new SelectList(db.Years, "Id", "YearNumber");
-            ViewBag.Umpires = new SelectList(db.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName");
+            ViewBag.Umpires = new SelectList(_scheduleService.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName");
             return View();
         }
 
@@ -74,11 +55,13 @@ namespace LeagueManagement.Controllers
                 _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HomeTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
-            ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name", schedule.SeasonId);
-           
+
+            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name");
+            ViewBag.SeasonId = new SelectList(_scheduleService.Seasons, "Id", "Name");
+            ViewBag.Umpires = new SelectList(_scheduleService.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName");
+
             return View(schedule);
         }
 
@@ -94,10 +77,10 @@ namespace LeagueManagement.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HomeTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
-            ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name", schedule.SeasonId);
+            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name");
+            ViewBag.SeasonId = new SelectList(_scheduleService.Seasons, "Id", "Name", schedule.SeasonId);
            // ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
             return View(schedule);
         }
@@ -116,10 +99,10 @@ namespace LeagueManagement.Controllers
                 _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HomeTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.VisitorTeamId = new SelectList(db.Teams, "Id", "Name");
-            ViewBag.GroundId = new SelectList(db.Grounds, "Id", "Name");
-            ViewBag.SeasonId = new SelectList(db.Seasons, "Id", "Name", schedule.SeasonId);
+            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
+            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name");
+            ViewBag.SeasonId = new SelectList(_scheduleService.Seasons, "Id", "Name", schedule.SeasonId);
            // ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
             return View(schedule);
         }
@@ -136,11 +119,11 @@ namespace LeagueManagement.Controllers
             {
                 return HttpNotFound();
             }
-            schedule.Team = (Team)(from a in db.Teams where a.Id == schedule.HomeTeamId select a).SingleOrDefault();
-            schedule.Team1 = (Team)(from a in db.Teams where a.Id == schedule.VisitorTeamId select a).SingleOrDefault();
-            schedule.Ground = (Ground)(from a in db.Grounds where a.Id == schedule.GroundId select a).SingleOrDefault();
-            schedule.Season = (Season)(from a in db.Seasons where a.Id == schedule.SeasonId select a).SingleOrDefault();
-            schedule.Umpire = (User)(from a in db.Users where a.Id == schedule.UmpireId select a).SingleOrDefault();
+            schedule.Team = (Team)(from a in _scheduleService.Teams where a.Id == schedule.HomeTeamId select a).SingleOrDefault();
+            schedule.Team1 = (Team)(from a in _scheduleService.Teams where a.Id == schedule.VisitorTeamId select a).SingleOrDefault();
+            schedule.Ground = (Ground)(from a in _scheduleService.Grounds where a.Id == schedule.GroundId select a).SingleOrDefault();
+            schedule.Season = (Season)(from a in _scheduleService.Seasons where a.Id == schedule.SeasonId select a).SingleOrDefault();
+            schedule.Umpire = (User)(from a in _scheduleService.Users where a.Id == schedule.UmpireId select a).SingleOrDefault();
             return View(schedule);
         }
 
@@ -153,15 +136,6 @@ namespace LeagueManagement.Controllers
             _scheduleService.Delete(schedule);
             _unitOfWork.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

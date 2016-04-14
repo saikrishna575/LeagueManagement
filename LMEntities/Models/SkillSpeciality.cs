@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace LMEntities.Models
 {
@@ -12,6 +13,7 @@ namespace LMEntities.Models
 
         public int Id { get; set; }
         public int OrganizationId { get; set; }
+        [DisplayName("Playing Role")]
         public string Name { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

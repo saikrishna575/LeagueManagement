@@ -1,6 +1,7 @@
 using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMEntities.Models
@@ -72,5 +73,13 @@ namespace LMEntities.Models
         public virtual User User1 { get; set; }
         public virtual User User2 { get; set; }
         public virtual UserType UserType { get; set; }
+
+        [NotMapped]
+        [DisplayName("Umpires")]
+        public string Umpire { get; set; }
+
+
+        [NotMapped]
+        public virtual ICollection<User> Umpires { get; set; }
     }
 }
