@@ -33,12 +33,15 @@ namespace LMEntities.Models
         public int Id { get; set; }
         public int OrganizationId { get; set; }
         public Nullable<int> UserTypeId { get; set; }
+        [DisplayName("Email ID")]
         public string EmailId { get; set; }
         [NotMapped]
         public bool IsSelected { get; set; }
+        [DisplayName("Phone Number")]
         public string PhoneNumber { get; set; }
-
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
         public string Password { get; set; }     
         public string UserName

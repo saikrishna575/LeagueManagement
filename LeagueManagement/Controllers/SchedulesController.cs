@@ -77,11 +77,13 @@ namespace LeagueManagement.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
-            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
-            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name");
+            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name",schedule.HomeTeamId);
+            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name",schedule.VisitorTeamId);
+            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name",schedule.GroundId);
             ViewBag.SeasonId = new SelectList(_scheduleService.Seasons, "Id", "Name", schedule.SeasonId);
-           // ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
+            ViewBag.Umpires = new SelectList(_scheduleService.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName",schedule.UmpireId);
+
+           
             return View(schedule);
         }
 
@@ -99,11 +101,12 @@ namespace LeagueManagement.Controllers
                 _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
-            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name");
-            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name");
+            ViewBag.HomeTeamId = new SelectList(_scheduleService.Teams, "Id", "Name", schedule.HomeTeamId);
+            ViewBag.VisitorTeamId = new SelectList(_scheduleService.Teams, "Id", "Name", schedule.VisitorTeamId);
+            ViewBag.GroundId = new SelectList(_scheduleService.Grounds, "Id", "Name", schedule.GroundId);
             ViewBag.SeasonId = new SelectList(_scheduleService.Seasons, "Id", "Name", schedule.SeasonId);
-           // ViewBag.YearId = new SelectList(db.Years, "Id", "Id", schedule.YearId);
+            ViewBag.Umpires = new SelectList(_scheduleService.Users.Where(a => a.UserTypeId == 2), "Id ", "UserName", schedule.UmpireId);
+
             return View(schedule);
         }
 

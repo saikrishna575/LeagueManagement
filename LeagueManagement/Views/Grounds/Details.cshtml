@@ -53,12 +53,17 @@
                 </div>
 
             </div>
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                @Html.ActionLink("Back to List", "Index")
-            </p>
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-10">
+                    <div class="register">
+                        @Html.ActionLink("Back", "Index")
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
-    </div>
-    @Html.Partial("_PartialStyle")
+</div>
+@Html.Partial("_PartialStyle")

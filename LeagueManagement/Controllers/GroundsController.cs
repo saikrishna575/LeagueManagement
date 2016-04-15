@@ -120,10 +120,21 @@ namespace LeagueManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Ground ground = await _groundService.FindAsync(id);
-            _groundService.Delete(ground);
-            _unitOfWork.SaveChanges();
-            return RedirectToAction("Index");
+            Ground ground = await _groundService.FindAsync(id);         
+            ground.Schedules = db.Schedules.Where(a => a.GroundId == id).ToList();
+
+            if(ground.Schedules.Count > 0)
+            {
+                ModelState.AddModelError("Name", " You Cannot Delete This Ground,It Is Already Assigned To Schedules");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _groundService.Delete(ground);
+                _unitOfWork.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(ground);
         }
 
         protected override void Dispose(bool disposing)

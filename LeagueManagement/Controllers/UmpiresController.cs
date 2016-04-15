@@ -144,13 +144,25 @@ namespace LeagueManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            User user = await _UserService.FindAsync(id);          
-            user.ObjectState = Repository.Pattern.Infrastructure.ObjectState.Modified;
-            user.UserTypeId = 3;
-            _UserService.Update(user);
-            _unitOfWork.SaveChanges();
-            return RedirectToAction("Index");
+            User user = await _UserService.FindAsync(id);
 
+            user.Schedules = db.Schedules.Where(a => a.UmpireId == id).ToList();
+
+            if(user.Schedules.Count > 0)
+            {
+                ModelState.AddModelError("FirstName", "Please change the schedule to delete this umpire");
+            }
+
+            if (ModelState.IsValid)
+            {
+                user.ObjectState = Repository.Pattern.Infrastructure.ObjectState.Modified;
+                user.UserTypeId = 3;
+                _UserService.Update(user);
+                _unitOfWork.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(user);
 
            
         }

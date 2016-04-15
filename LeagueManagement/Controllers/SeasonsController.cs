@@ -36,14 +36,14 @@ namespace LeagueManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Season season = await _SeasonService.FindAsync(id);
+            Season season =  _SeasonService.Find(id);
+
             if (season == null)
             {
                 return HttpNotFound();
             }
             return View(season);
         }
-
         // GET: Seasons/Create
         public ActionResult Create()
         {
@@ -51,7 +51,6 @@ namespace LeagueManagement.Controllers
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Name");
             return View();
         }
-
         // POST: Seasons/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,7 +64,6 @@ namespace LeagueManagement.Controllers
                 _unitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.LeagueId = new SelectList(db.Leagues, "Id", "Name", season.LeagueId);
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Name", season.OrganizationId);
             return View(season);
@@ -114,7 +112,7 @@ namespace LeagueManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Season season = await _SeasonService.FindAsync(id);
+            Season season = _SeasonService.Find(id);
             if (season == null)
             {
                 return HttpNotFound();

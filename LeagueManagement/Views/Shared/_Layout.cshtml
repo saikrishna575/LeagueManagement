@@ -56,7 +56,7 @@
                     </div>
 
                     <!-- Logo -->
-                    <a class="logo" href="index.html">
+                    <a class="logo"href="@Url.Action("Index", "Home")">
                         <img src="~/images/logo.png" alt="logo">
                     </a>
 
@@ -80,94 +80,28 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Home","Index","Home")</li>
-                            <li>@Html.ActionLink("Schedule","Index","Schedules")</li>
+                            <li>@Html.ActionLink("Schedule","Index","Schedules")</li>                            
                             <li class="dropdown">
-                                <a href="#contact" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics </span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams </span></a>
-                              
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams </span></a>                              
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-                                    <li>@Html.ActionLink("Team Members", "Index", "TeamMembers")</li>
-                                    @*<li><a href="#">Something else here</a></li>*@
-
+                                    <li>@Html.ActionLink("Team Members", "Index", "TeamMembers")</li>                                  
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                @Html.ActionLink("Umpires","Index","Umpires")
-                                @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Umpires </span></a>*@
-                                @*<ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>*@
+                                @Html.ActionLink("Umpires","Index","Umpires")                              
                             </li>
                             <li class="dropdown">
-                                @Html.ActionLink("Grounds","Index","Grounds")
-                                @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grounds </span></a>*@
-                                @*<ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>*@
+                                @Html.ActionLink("Grounds","Index","Grounds")                              
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Previous Season </span></a>
-                                @*<ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>*@
+                                @Html.ActionLink("Season", "Index", "Seasons")
+                               
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">League      </span></a>
-                                @*<ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>*@
+                                @Html.ActionLink("League", "Index", "Leagues")
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Galleries      </span></a>
-                                @*<ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>*@
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MyMCLA </span></a>
-                                @*<ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-
-                                </ul>*@
-                            </li>
-                            <li>
-                                <a href="#">About Us </span></a>
-                            </li>
-
+                           
                         </ul>
 
                     </div>
@@ -188,12 +122,10 @@
                 <div class="col-md-8 col-sm-8">
                     <ul class="footermenu">
                         <li><a href="#">SITEMAP | </a></li>
-                        <li><a href="#"> FEEDBACK | </a></li>
-                        <li><a href="#"> RSS | </a></li>
+                        <li><a href="#"> FEEDBACK | </a></li>                       
                         <li><a href="#"> ABOUT US | </a></li>
-                        <li><a href="#"> CAREERS | </a></li>
-                        <li><a href="#"> RIVACY POLICY | </a></li>
-                        <li><a href="#"> PTERMS OF USE</a></li>
+                        <li><a href="#"> PRIVACY POLICY | </a></li>
+                        <li><a href="#"> TERMS OF USE</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-4">
