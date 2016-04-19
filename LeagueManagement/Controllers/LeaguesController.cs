@@ -46,7 +46,7 @@ namespace LeagueManagement.Controllers
             }
             return View(league);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Leagues/Create
         public ActionResult Create()
         {
@@ -58,6 +58,7 @@ namespace LeagueManagement.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,OrganizationId")] League league)
         {
@@ -71,7 +72,7 @@ namespace LeagueManagement.Controllers
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Name", league.OrganizationId);
             return View(league);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Leagues/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
@@ -92,6 +93,7 @@ namespace LeagueManagement.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,OrganizationId")] League league)
         {
@@ -105,7 +107,7 @@ namespace LeagueManagement.Controllers
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Name", league.OrganizationId);
             return View(league);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Leagues/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
@@ -123,6 +125,7 @@ namespace LeagueManagement.Controllers
 
         // POST: Leagues/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {

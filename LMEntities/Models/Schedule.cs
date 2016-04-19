@@ -34,12 +34,15 @@ namespace LMEntities.Models
         public Nullable<int> GroundId { get; set; }
           
         [Required]
+        [DisplayName("Start Time")]
         public string StartTime { get; set; }
         [Required]
+        [DisplayName("End Time")]
         public string EndTime { get; set; }
         [Required]
         [DateRange]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayName("Schedule Date")]
         public Nullable<System.DateTime> ScheduleDate { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public int CreatedBy { get; set; }

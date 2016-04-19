@@ -1,0 +1,62 @@
+﻿@model LMEntities.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-md-12 col-sm-8 mininumheight">
+    <div class="col-md-2 col-sm-9">
+        @if (Model.ProfilePhoto != null)
+        {
+            <img src="@Url.Content(Model.ProfilePhoto)" alt="Image" style="height:150px;width:150px;" />
+        }
+    </div>
+    <div id="loginbox" class="mainbox col-md-9 col-sm-9">
+
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+                    <h2>Umpire Details</h2>
+                    <hr />
+                    <div class="form-horizontal team">
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">
+                                @Html.DisplayNameFor(model => model.FirstName)
+                            </label>
+                            <div class="col-sm-8">
+                                @Html.DisplayFor(model => model.FirstName)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </label>
+                            <div class="col-sm-8">
+                                @Html.DisplayFor(model => model.LastName)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </label>
+                            <div class="col-sm-8">
+                                @Html.DisplayFor(model => model.PhoneNumber)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">
+                                @Html.DisplayNameFor(model => model.EmailId)
+                            </label>
+                            <div class="col-sm-8">
+                                @Html.DisplayFor(model => model.EmailId)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    

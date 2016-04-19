@@ -5,38 +5,40 @@
 }
 
 <div class="col-md-8 col-sm-6 mininumheight">
-
-    <div id="loginbox" style="margin-top: 10px;" class="mainbox col-md-7 col-md-offset-1 col-sm-9">
-        <h2>League Details</h2>
-        <hr />
-        <div class="form-horizontal team">
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-4 control-label">
-
-                    @Html.DisplayNameFor(model => model.OrganizationId)
-                </label>
-                <div class="col-sm-8">
-                    @Html.DisplayFor(model => model.Organization.Name)
+    <div id="loginbox" style="margin-top: 10px;" class="mainbox col-md-9 col-md-offset-1 col-sm-9">
+        <div>
+            <h4>League</h4>
+            <hr />
+            <div class="form-horizontal team">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        @Html.DisplayNameFor(model => model.OrganizationId)
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.DisplayFor(model => model.Organization.Name)
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-4 control-label">
-                    @Html.DisplayNameFor(model => model.Name)
-                </label>
-                <div class="col-sm-8">
-                    @Html.DisplayFor(model => model.Name)
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </label>
+                    <div class="col-sm-8">
+                        @Html.DisplayFor(model => model.Name)
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-4 col-md-10">
-                    <div class="register">
-                        @Html.ActionLink("Back", "Index")
-                        @Html.ActionLink("Edit League", "Edit", new { id = Model.Id })
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <div class="register">
+                            @Html.ActionLink("Back", "Index")
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Edit ", "Edit", new { id = Model.Id })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @Html.Partial("_PartialStyle")

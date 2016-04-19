@@ -221,8 +221,9 @@ body.boxed #topBar {
 	color:#00fff6;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-	color:#00fff6;
+    color:yellow;
 	background-color:transparent;
+    font-weight: bold;
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
 	color:#00fff6;

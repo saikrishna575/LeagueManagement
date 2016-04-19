@@ -1,0 +1,221 @@
+﻿@model LMEntities.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-md-12 col-sm-8 mininumheight">
+    <div class="col-md-2 col-sm-9">
+        @if (Model.ProfilePhoto != null)
+        {
+            <img src="@Url.Content(Model.ProfilePhoto)" alt="Image" style="height:150px;width:150px;" />
+        }
+    </div>
+    <div id="loginbox" class="mainbox col-md-9 col-sm-9">
+        @using (Html.BeginForm("Details", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div class="col-md-12 col-sm-8">
+                    <div class="tab-pane tab-pane1 fade in active" id="Personal Details">
+                        <div class="panel-group" id="accordion2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">
+                                            Personal Details
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne2" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.GenderId, "Gender", htmlAttributes: new { @class = "col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Gender.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PlaceofBirth, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.PlaceofBirth, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-8">
+                    <div class="tab-pane tab-pane1 fade in active" id="Skill Details">
+                        <div class="panel-group" id="accordion3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne3">
+                                            My Skills
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne3" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.LivedInUSAsince, "Living in USA Since", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class=" col-md-8">
+                                                @Html.DisplayFor(model => model.LivedInUSAsince, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SchoolName, "School Name", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.SchoolName, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SkillSpecialityId, "Skill Speciality", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.SkillSpeciality.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.BattingStyle, "Batting Style", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.BattingStyle, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FavouriteShot, "Favourite Shot", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.FavouriteShot, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.BowlingStyle, "Bowling Style", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.BowlingStyle, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-8">
+                    <div class="tab-pane tab-pane1 fade in active" id="Skill Details">
+                        <div class="panel-group" id="accordion4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne4">
+                                            Favorites
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne4" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FavoriteCricketer, "Favorite Cricketer", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.FavoriteCricketer, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Likes, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Likes, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Dislikes, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Dislikes, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FavouriteFood, "Favourite Food", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.FavouriteFood, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FavouriteMovie, "Favourite Movie", htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.FavouriteMovie, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Ambition, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Ambition, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Hobbies, htmlAttributes: new { @class = " col-sm-4 control-label" })
+                                            <div class="col-md-8">
+                                                @Html.DisplayFor(model => model.Hobbies, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

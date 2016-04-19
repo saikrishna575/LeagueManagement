@@ -1,11 +1,5 @@
-﻿
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using LMEntities.Models;
 using Repository.Pattern.UnitOfWork;
@@ -15,14 +9,15 @@ namespace LeagueManagement.Controllers
 {
     public class GroundsController : Controller
     {
-        private SportsSiteContext db = new SportsSiteContext();
         private readonly IGroundService _groundService;
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IScheduleService _scheduleService;
 
-        public GroundsController(IGroundService GroundService, IUnitOfWork unitOfWork)
+        public GroundsController(IGroundService groundService, IUnitOfWork unitOfWork, IScheduleService scheduleService)
         {
-            _groundService = GroundService;
+            _groundService = groundService;
             _unitOfWork = unitOfWork;
+            _scheduleService = scheduleService;
         }
 
         public async Task<ActionResult> Index()
@@ -44,7 +39,7 @@ namespace LeagueManagement.Controllers
             }
             return View(ground);
         }
-
+        [Authorize(Roles ="Admin")]
         // GET: Grounds/Create
         public ActionResult Create()
         {
@@ -67,7 +62,7 @@ namespace LeagueManagement.Controllers
 
             return View(ground);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Grounds/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
@@ -87,6 +82,7 @@ namespace LeagueManagement.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Address,Directions")] Ground ground)
         {
@@ -99,7 +95,7 @@ namespace LeagueManagement.Controllers
             }
             return View(ground);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Grounds/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
@@ -116,12 +112,13 @@ namespace LeagueManagement.Controllers
         }
 
         // POST: Grounds/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Ground ground = await _groundService.FindAsync(id);         
-            ground.Schedules = db.Schedules.Where(a => a.GroundId == id).ToList();
+            Ground ground = await _groundService.FindAsync(id);
+            ground.Schedules = _scheduleService.GetSchedules_forGround(id);
 
             if(ground.Schedules.Count > 0)
             {
@@ -137,13 +134,20 @@ namespace LeagueManagement.Controllers
             return View(ground);
         }
 
-        protected override void Dispose(bool disposing)
+        public async Task<ActionResult> Detail(int? id)
         {
-            if (disposing)
+            if (id == null)
             {
-                db.Dispose();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            base.Dispose(disposing);
+            Ground ground = await _groundService.FindAsync(id);
+            if (ground == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ground);
         }
+
+
     }
 }

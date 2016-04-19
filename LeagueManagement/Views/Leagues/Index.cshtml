@@ -5,14 +5,15 @@
 }
 <div class="col-md-12 col-sm-12 mininumheight">
     <div class="table-responsive">
-        <div class="form-group">
-
-            <b> @Html.ActionLink("Add New League", "Create", new { htmlAttributes = new { @class = "col-sm-12 control-label back" } })</b>
-
-        </div>
         <div class="col-md-12 col-sm-12 mininumheight">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="register">
+                    <b> @Html.ActionLink("Add New League", "Create", new { htmlAttributes = new { @class = "col-sm-12 control-label back" } })</b>
+                </div>
+            }
             <div class="table-responsive">
-                <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                <table class="table table-bordred table-striped">
                     <thead class="cf">
                         <tr>
                             <th>
@@ -24,10 +25,9 @@
                             <th></th>
                         </tr>
                     </thead>
-
-                    @foreach (var item in Model)
-                    {
-                        <tbody>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Organization.Name)
@@ -35,17 +35,39 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                </td>
-                            </tr>
-                        </tbody>
-                    }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <td class="numeric">
+                                        <a href="@Url.Action("Details", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-eye-open btn btn-primary btn-xs"></i>
+                                            <span class="sr-only">Details</span>
+                                        </a>
+                                        <a href="@Url.Action("Edit", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-edit btn btn-primary btn-xs"></i>
+                                            <span class="sr-only">Edit</span>
+                                        </a>
+                                        <a href="@Url.Action("Delete", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-trash btn btn-danger btn-xs"></i>
+                                            <span class="sr-only">Delete</span>
+                                        </a>
+                                    </td>
+                                }
 
+                                else
+                                {
+                                    <td class="numeric">
+                                        <a href="@Url.Action("Details", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-eye-open btn btn-primary btn-xs"></i>
+                                            <span class="sr-only">Details</span>
+                                        </a>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 </div>

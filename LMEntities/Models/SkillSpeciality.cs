@@ -8,7 +8,7 @@ namespace LMEntities.Models
     {
         public SkillSpeciality()
         {
-            this.TeamMembers = new List<TeamMember>();
+            this.Users = new List<User>();
         }
 
         public int Id { get; set; }
@@ -19,6 +19,6 @@ namespace LMEntities.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public virtual ICollection<TeamMember> TeamMembers { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

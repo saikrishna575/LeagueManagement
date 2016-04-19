@@ -381,9 +381,14 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Shared\_PartialStyle.cshtml" />
     <Content Include="Views\Umpires\Create.cshtml" />
+    <Content Include="Views\Grounds\Detail.cshtml" />
+    <Content Include="Views\Teams\Detail.cshtml" />
+    <Content Include="Views\Umpires\Detail.cshtml" />
+    <Content Include="Views\Users\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UsersPhotos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

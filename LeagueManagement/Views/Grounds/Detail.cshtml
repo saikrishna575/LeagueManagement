@@ -1,52 +1,59 @@
 ﻿@model LMEntities.Models.Ground
+
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Details";
 }
+
+
+
 <div class="col-md-8 col-sm-6 mininumheight">
     <div id="loginbox" style="margin-top:10px;" class="mainbox col-md-9 col-md-offset-1 col-sm-9">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <h1>Delete Ground</h1>
-            <h4>Are you sure you want to delete this Ground?</h4>
+
+        <div>
+            <h4>Ground</h4>
+            <hr />
             <div class="form-horizontal team">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <label>
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </label>
+
                 <div class="form-group">
                     <label class="col-sm-4 control-label">
+
                         @Html.DisplayNameFor(model => model.Name)
+
                     </label>
                     <div class="col-sm-8">
+
                         @Html.DisplayFor(model => model.Name)
                     </div>
+
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-4 control-label">
+
                         @Html.DisplayNameFor(model => model.Address)
-                    </label><div class="col-sm-8">
+                    </label>
+
+                    <div class="col-sm-8">
+
                         @Html.DisplayFor(model => model.Address)
                     </div>
                 </div>
+
+
                 <div class="form-group">
                     <label class="col-sm-4 control-label">
-                        @Html.DisplayNameFor(model => model.Directions)
-                    </label><div class="col-sm-8">
-                        @Html.DisplayFor(model => model.Directions)
 
+                        @Html.DisplayNameFor(model => model.Directions)
+                    </label>
+
+                    <div class="col-sm-8">
+
+                        @Html.DisplayFor(model => model.Directions)
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-4 col-md-10">
-                    <div class="register">
-                        @Html.ActionLink("Back", "Index")
-                        <input type="submit" value="Delete" class="btn btn-default create" />
-                    </div>
-                </div>
-            </div>
-        }
+
+            </div>         
+        </div>
     </div>
 </div>
 @Html.Partial("_PartialStyle")
