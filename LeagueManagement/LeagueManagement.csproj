@@ -203,6 +203,7 @@
     <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Controllers\SkillSpecialitiesController.cs" />
+    <Compile Include="Controllers\TeamManagementsController.cs" />
     <Compile Include="Controllers\TeamMembersController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\TeamTitlesController.cs" />
@@ -385,6 +386,11 @@
     <Content Include="Views\Teams\Detail.cshtml" />
     <Content Include="Views\Umpires\Detail.cshtml" />
     <Content Include="Views\Users\Detail.cshtml" />
+    <Content Include="Views\TeamManagements\Create.cshtml" />
+    <Content Include="Views\TeamManagements\Delete.cshtml" />
+    <Content Include="Views\TeamManagements\Details.cshtml" />
+    <Content Include="Views\TeamManagements\Edit.cshtml" />
+    <Content Include="Views\TeamManagements\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

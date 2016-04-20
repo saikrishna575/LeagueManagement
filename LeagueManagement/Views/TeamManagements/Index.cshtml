@@ -1,0 +1,83 @@
+﻿@model IEnumerable<LMEntities.Models.TeamManagement>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-12 col-sm-12 mininumheight">
+    <div class="table-responsive">
+        <div class="col-md-12 col-sm-12 mininumheight">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="register">
+                    <b> @Html.ActionLink("Add New TeamManagement", "Create", new { htmlAttributes = new { @class = "col-sm-12 control-label back" } })</b>
+
+                </div>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordred table-striped">
+                    <thead class="cf">
+                        <tr>
+                            <th class="numeric">
+                                @Html.DisplayNameFor(model => model.TeamId)
+                            </th>
+                            <th class="numeric">
+                                @Html.DisplayNameFor(model => model.TeamMemberId)
+                            </th>
+                            <th class="numeric">
+                                @Html.DisplayNameFor(model => model.TitleId)
+                            </th>
+                            <th class="numeric"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="numeric">
+                                    @Html.DisplayFor(modelItem => item.Team.Name)
+                                </td>
+                                <td class="numeric">
+                                    @Html.DisplayFor(modelItem => item.TeamMember.Name)
+                                </td>
+                                <td class="numeric">
+                                    @Html.DisplayFor(modelItem => item.TeamTitle.Name)
+                                </td>
+                                <td class="numeric">
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                    <td class="numeric">
+                                        <a href="@Url.Action("Details", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-eye-open btn btn-primary btn-xs"></i>
+                                            <span class="sr-only">Details</span>
+                                        </a>
+                                        <a href="@Url.Action("Edit", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-edit btn btn-primary btn-xs"></i>
+                                            <span class="sr-only">Edit</span>
+                                        </a>
+                                        <a href="@Url.Action("Delete", new {id = item.Id})">
+                                            <i class="glyphicon glyphicon-trash btn btn-danger btn-xs"></i>s
+                                            <span class="sr-only">Delete</span>
+                                        </a>
+                                    </td>
+                                    }
+
+                                    else
+                                    {
+                                        <td class="numeric">
+                                            <a href="@Url.Action("Details", new {id = item.Id})">
+                                                <i class="glyphicon glyphicon-eye-open btn btn-primary btn-xs"></i>
+                                                <span class="sr-only">Details</span>
+                                            </a>
+                                        </td>
+                                    }
+
+                                </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

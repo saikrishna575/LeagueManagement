@@ -77,19 +77,11 @@
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Schedules" ? "active" : "")">@Html.ActionLink("Schedule", "Index", "Schedules")</li>
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Teams" ? "active" : "")">@Html.ActionLink("Teams", "Index", "Teams")</li>
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TeamManagements" ? "active" : "")">@Html.ActionLink("TeamManagements", "Index", "TeamManagements")</li>
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Umpires" ? "active" : "")">@Html.ActionLink("Umpires", "Index", "Umpires")</li>
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Grounds" ? "active" : "")">@Html.ActionLink("Grounds", "Index", "Grounds")</li>
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Seasons" ? "active" : "")">@Html.ActionLink("Season", "Index", "Seasons")</li>
                             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Leagues" ? "active" : "")">@Html.ActionLink("League", "Index", "Leagues")</li>
-
-                            
-                            @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li>@Html.ActionLink("Schedule", "Index", "Schedules")</li>
-    <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-    <li>@Html.ActionLink("Umpires", "Index", "Umpires")</li>
-    <li>@Html.ActionLink("Grounds", "Index", "Grounds")</li>
-    <li>@Html.ActionLink("Season", "Index", "Seasons")</li>
-    <li>@Html.ActionLink("League", "Index", "Leagues")</li>*@
                             <li>
                                 @if (Request.IsAuthenticated)
                                 {
